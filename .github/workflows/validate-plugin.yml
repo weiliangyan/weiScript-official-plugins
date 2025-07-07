@@ -1,0 +1,68 @@
+name: Plugin Validation
+
+on:
+  pull_request:
+    paths:
+      - 'plugins/**'
+      - 'registry.json'
+      - 'categories.json'
+
+jobs:
+  validate:
+    name: Validate Plugin Submission
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Validate JSON Files
+      run: |
+        echo "Validating JSON files..."
+        
+        if [ -f "registry.json" ]; then
+          echo "Validating registry.json..."
+          cat registry.json | jq . > /dev/null
+          echo "registry.json is valid"
+        fi
+        
+        if [ -f "categories.json" ]; then
+          echo "Validating categories.json..."
+          cat categories.json | jq . > /dev/null
+          echo "categories.json is valid"
+        fi
+        
+    - name: Check Plugin Structure
+      run: |
+        echo "Checking plugin structure..."
+        
+        CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD)
+        CHANGED_PLUGINS=$(echo "$CHANGED_FILES" | grep '^plugins/' | cut -d'/' -f2 | sort -u)
+        
+        if [ -z "$CHANGED_PLUGINS" ]; then
+          echo "No plugin changes detected"
+          exit 0
+        fi
+        
+        for plugin in $CHANGED_PLUGINS; do
+          echo "Validating plugin: $plugin"
+          
+          PLUGIN_DIR="plugins/$plugin"
+          
+          if [ ! -f "$PLUGIN_DIR/plugin.yml" ]; then
+            echo "Missing plugin.yml in $plugin"
+            exit 1
+          fi
+          
+          if [ ! -f "$PLUGIN_DIR/main.js" ]; then
+            echo "Missing main.js in $plugin"
+            exit 1
+          fi
+          
+          echo "Plugin $plugin structure is valid"
+        done

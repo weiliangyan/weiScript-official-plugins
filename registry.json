@@ -1,0 +1,141 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2024-12-19T00:00:00Z",
+  "total_plugins": 3,
+  "api_version": "1.0",
+  "repository_info": {
+    "name": "weiScript Official Plugin Repository",
+    "description": "官方认证的 weiScript 插件仓库",
+    "url": "https://github.com/weiliangyan/weiScript-official-plugins",
+    "maintainer": "weiScript Team"
+  },
+  "plugins": [
+    {
+      "id": "superrpg-player",
+      "name": "SuperRPG Player System",
+      "version": "1.0.0",
+      "description": "完整的玩家数据管理系统，包含等级、经验、属性管理",
+      "author": "SuperRPG Team",
+      "category": "rpg-system",
+      "tags": ["rpg", "player", "level", "stats", "experience"],
+      "homepage": "https://github.com/weiScript-plugins/superrpg-player",
+      "repository_url": "https://github.com/weiScript-plugins/superrpg-player",
+      "download_url": "https://github.com/weiliangyan/weiScript-official-plugins/releases/download/v1.0.0/superrpg-player-1.0.0.zip",
+      "file_size": 45120,
+      "downloads": 1250,
+      "stars": 89,
+      "rating": 4.8,
+      "created_at": "2024-01-01T00:00:00Z",
+      "updated_at": "2024-12-19T00:00:00Z",
+      "dependencies": {
+        "required": [
+          "weiScript-core@>=1.0.0",
+          "weiScript-database@>=1.0.0"
+        ],
+        "optional": [
+          "weiScript-config@>=1.0.0"
+        ]
+      },
+      "compatibility": {
+        "minecraft_versions": ["1.19", "1.20", "1.21"],
+        "api_version": "1.0",
+        "java_version": "8+"
+      },
+      "license": "MIT",
+      "screenshots": [
+        "https://raw.githubusercontent.com/weiliangyan/weiScript-official-plugins/main/screenshots/superrpg-player-1.png"
+      ],
+      "documentation": "https://docs.weiscript.org/plugins/superrpg-player",
+      "support": "https://github.com/weiScript-plugins/superrpg-player/issues",
+      "verified": true,
+      "featured": true
+    },
+    {
+      "id": "superrpg-skill",
+      "name": "SuperRPG Skill System",
+      "version": "1.0.0",
+      "description": "强大的技能系统，支持技能释放、冷却、热键栏管理",
+      "author": "SuperRPG Team",
+      "category": "rpg-system",
+      "tags": ["rpg", "skill", "magic", "combat", "hotbar"],
+      "homepage": "https://github.com/weiScript-plugins/superrpg-skill",
+      "repository_url": "https://github.com/weiScript-plugins/superrpg-skill",
+      "download_url": "https://github.com/weiliangyan/weiScript-official-plugins/releases/download/v1.0.0/superrpg-skill-1.0.0.zip",
+      "file_size": 67890,
+      "downloads": 980,
+      "stars": 76,
+      "rating": 4.7,
+      "created_at": "2024-01-01T00:00:00Z",
+      "updated_at": "2024-12-19T00:00:00Z",
+      "dependencies": {
+        "required": [
+          "weiScript-core@>=1.0.0",
+          "weiScript-database@>=1.0.0",
+          "superrpg-player@>=1.0.0"
+        ],
+        "optional": []
+      },
+      "compatibility": {
+        "minecraft_versions": ["1.19", "1.20", "1.21"],
+        "api_version": "1.0",
+        "java_version": "8+"
+      },
+      "license": "MIT",
+      "screenshots": [
+        "https://raw.githubusercontent.com/weiliangyan/weiScript-official-plugins/main/screenshots/superrpg-skill-1.png"
+      ],
+      "documentation": "https://docs.weiscript.org/plugins/superrpg-skill",
+      "support": "https://github.com/weiScript-plugins/superrpg-skill/issues",
+      "verified": true,
+      "featured": true
+    },
+    {
+      "id": "economy-system",
+      "name": "Economy System",
+      "version": "1.0.0",
+      "description": "完整的经济系统，支持货币、商店、交易功能",
+      "author": "Community Developer",
+      "category": "economy",
+      "tags": ["economy", "money", "shop", "trade", "vault"],
+      "homepage": "https://github.com/weiScript-plugins/economy-system",
+      "repository_url": "https://github.com/weiScript-plugins/economy-system",
+      "download_url": "https://github.com/weiliangyan/weiScript-official-plugins/releases/download/v1.0.0/economy-system-1.0.0.zip",
+      "file_size": 34560,
+      "downloads": 2100,
+      "stars": 145,
+      "rating": 4.9,
+      "created_at": "2024-01-01T00:00:00Z",
+      "updated_at": "2024-12-19T00:00:00Z",
+      "dependencies": {
+        "required": [
+          "weiScript-core@>=1.0.0",
+          "weiScript-database@>=1.0.0"
+        ],
+        "optional": [
+          "superrpg-player@>=1.0.0"
+        ]
+      },
+      "compatibility": {
+        "minecraft_versions": ["1.19", "1.20", "1.21"],
+        "api_version": "1.0",
+        "java_version": "8+"
+      },
+      "license": "MIT",
+      "screenshots": [
+        "https://raw.githubusercontent.com/weiliangyan/weiScript-official-plugins/main/screenshots/economy-system-1.png"
+      ],
+      "documentation": "https://docs.weiscript.org/plugins/economy-system",
+      "support": "https://github.com/weiScript-plugins/economy-system/issues",
+      "verified": true,
+      "featured": false
+    }
+  ],
+  "statistics": {
+    "total_downloads": 4330,
+    "active_plugins": 3,
+    "verified_plugins": 3,
+    "featured_plugins": 2,
+    "categories": 2,
+    "average_rating": 4.8
+  }
+}

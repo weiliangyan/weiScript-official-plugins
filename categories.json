@@ -1,0 +1,126 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2024-12-19T00:00:00Z",
+  "categories": [
+    {
+      "id": "rpg-system",
+      "name": "RPG系统",
+      "name_en": "RPG System",
+      "description": "角色扮演游戏相关的插件，包括玩家数据、技能、职业等",
+      "description_en": "Role-playing game related plugins including player data, skills, classes, etc.",
+      "icon": "⚔️",
+      "color": "#ff6b6b",
+      "plugin_count": 2,
+      "featured": true,
+      "sort_order": 1
+    },
+    {
+      "id": "economy",
+      "name": "经济系统",
+      "name_en": "Economy",
+      "description": "货币、商店、交易相关的插件",
+      "description_en": "Currency, shop, and trading related plugins",
+      "icon": "💰",
+      "color": "#4ecdc4",
+      "plugin_count": 1,
+      "featured": true,
+      "sort_order": 2
+    },
+    {
+      "id": "management",
+      "name": "管理工具",
+      "name_en": "Management",
+      "description": "服务器管理和维护工具",
+      "description_en": "Server management and maintenance tools",
+      "icon": "🛠️",
+      "color": "#45b7d1",
+      "plugin_count": 0,
+      "featured": false,
+      "sort_order": 3
+    },
+    {
+      "id": "social",
+      "name": "社交功能",
+      "name_en": "Social",
+      "description": "聊天、好友、公会等社交功能",
+      "description_en": "Chat, friends, guilds and other social features",
+      "icon": "👥",
+      "color": "#96ceb4",
+      "plugin_count": 0,
+      "featured": false,
+      "sort_order": 4
+    },
+    {
+      "id": "minigames",
+      "name": "小游戏",
+      "name_en": "Mini Games",
+      "description": "各种小游戏和娱乐功能",
+      "description_en": "Various mini-games and entertainment features",
+      "icon": "🎮",
+      "color": "#feca57",
+      "plugin_count": 0,
+      "featured": false,
+      "sort_order": 5
+    },
+    {
+      "id": "world",
+      "name": "世界管理",
+      "name_en": "World Management",
+      "description": "世界生成、保护、传送等功能",
+      "description_en": "World generation, protection, teleportation features",
+      "icon": "🌍",
+      "color": "#ff9ff3",
+      "plugin_count": 0,
+      "featured": false,
+      "sort_order": 6
+    },
+    {
+      "id": "utility",
+      "name": "实用工具",
+      "name_en": "Utilities",
+      "description": "各种实用的辅助工具",
+      "description_en": "Various useful utility tools",
+      "icon": "🔧",
+      "color": "#54a0ff",
+      "plugin_count": 0,
+      "featured": false,
+      "sort_order": 7
+    },
+    {
+      "id": "api",
+      "name": "API扩展",
+      "name_en": "API Extensions",
+      "description": "为其他插件提供API的扩展插件",
+      "description_en": "Extension plugins that provide APIs for other plugins",
+      "icon": "🔌",
+      "color": "#5f27cd",
+      "plugin_count": 0,
+      "featured": false,
+      "sort_order": 8
+    },
+    {
+      "id": "protection",
+      "name": "保护系统",
+      "name_en": "Protection",
+      "description": "领地保护、反作弊等安全功能",
+      "description_en": "Land protection, anti-cheat and security features",
+      "icon": "🛡️",
+      "color": "#2ed573",
+      "plugin_count": 0,
+      "featured": false,
+      "sort_order": 9
+    },
+    {
+      "id": "cosmetic",
+      "name": "装饰功能",
+      "name_en": "Cosmetics",
+      "description": "粒子效果、称号、皮肤等装饰功能",
+      "description_en": "Particle effects, titles, skins and other cosmetic features",
+      "icon": "✨",
+      "color": "#ff6348",
+      "plugin_count": 0,
+      "featured": false,
+      "sort_order": 10
+    }
+  ]
+}
