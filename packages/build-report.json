@@ -1,7 +1,53 @@
 {
-  "build_time": "2025-07-08T04:24:21.015Z",
+  "build_time": "2025-07-08T04:27:16.745Z",
   "total_plugins": 9,
-  "successful_builds": 0,
-  "failed_builds": 9,
-  "packages": {}
+  "successful_builds": 9,
+  "failed_builds": 0,
+  "packages": {
+    "weiScript-core": {
+      "size": 4308,
+      "size_formatted": "4.21 KB",
+      "created": "2025-07-08T04:27:16.644Z"
+    },
+    "weiScript-database": {
+      "size": 5356,
+      "size_formatted": "5.23 KB",
+      "created": "2025-07-08T04:27:16.665Z"
+    },
+    "weiScript-player": {
+      "size": 4633,
+      "size_formatted": "4.52 KB",
+      "created": "2025-07-08T04:27:16.675Z"
+    },
+    "weiScript-profession": {
+      "size": 7075,
+      "size_formatted": "6.91 KB",
+      "created": "2025-07-08T04:27:16.696Z"
+    },
+    "weiScript-skill": {
+      "size": 6695,
+      "size_formatted": "6.54 KB",
+      "created": "2025-07-08T04:27:16.706Z"
+    },
+    "weiScript-equipment": {
+      "size": 1276,
+      "size_formatted": "1.25 KB",
+      "created": "2025-07-08T04:27:16.714Z"
+    },
+    "weiScript-quest": {
+      "size": 1251,
+      "size_formatted": "1.22 KB",
+      "created": "2025-07-08T04:27:16.717Z"
+    },
+    "weiScript-economy": {
+      "size": 1250,
+      "size_formatted": "1.22 KB",
+      "created": "2025-07-08T04:27:16.738Z"
+    },
+    "weiScript-social": {
+      "size": 1169,
+      "size_formatted": "1.14 KB",
+      "created": "2025-07-08T04:27:16.743Z"
+    }
+  }
 }
