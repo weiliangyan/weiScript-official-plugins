@@ -9,11 +9,13 @@ yarn-error.log*
 *.jar
 *.war
 *.ear
-*.zip
 *.tar.gz
 *.rar
 target/
 build/
+
+# 允许 packages 目录中的 ZIP 文件
+!packages/*.zip
 
 # IDE
 .idea/
