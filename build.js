@@ -9,7 +9,7 @@ const archiver = require('archiver');
 
 class PluginBuilder {
     constructor() {
-        this.srcDir = './';
+        this.srcDir = './src';
         this.packagesDir = './packages';
         this.packageIndex = null;
         this.loadPackageIndex();

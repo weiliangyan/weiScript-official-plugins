@@ -1,0 +1,89 @@
+name: "weiScript-core"
+version: "1.0.0"
+description: "weiScript 核心模块，提供基础 API 和服务框架"
+author: "weiScript Team"
+main: "main.js"
+api-version: "1.0"
+website: "https://github.com/weiliangyan/weiScript-official-plugins"
+
+# 依赖关系
+dependencies:
+  required: []
+  optional: []
+
+# 权限定义
+permissions:
+  weiscript.core.use:
+    description: "使用 weiScript 核心功能"
+    default: true
+  weiscript.core.admin:
+    description: "管理 weiScript 核心"
+    default: op
+
+# 命令定义
+commands:
+  weiscript:
+    description: "weiScript 核心命令"
+    usage: "/weiscript <info|reload|status>"
+    permission: "weiscript.core.use"
+
+# 提供的服务
+provides:
+  - "core-service"
+  - "event-service"
+  - "config-service"
+  - "logger-service"
+
+# 服务接口
+services:
+  core-service:
+    description: "核心服务管理"
+    methods:
+      - "registerService(name, service)"
+      - "getService(name)"
+      - "unregisterService(name)"
+      - "listServices()"
+  event-service:
+    description: "事件系统服务"
+    methods:
+      - "on(event, handler)"
+      - "off(event, handler)"
+      - "emit(event, data)"
+      - "publish(event, data)"
+  config-service:
+    description: "配置管理服务"
+    methods:
+      - "get(key, defaultValue)"
+      - "set(key, value)"
+      - "getSection(section)"
+      - "reload()"
+  logger-service:
+    description: "日志服务"
+    methods:
+      - "log(message)"
+      - "info(message)"
+      - "warn(message)"
+      - "error(message)"
+
+# 核心配置
+core_config:
+  # 服务管理
+  services:
+    auto_register: true
+    lazy_loading: true
+    
+  # 事件系统
+  events:
+    async_events: true
+    max_listeners: 100
+    
+  # 配置管理
+  config:
+    auto_reload: true
+    watch_files: true
+    
+  # 日志系统
+  logging:
+    level: "INFO"
+    file_output: true
+    console_output: true
