@@ -1,0 +1,207 @@
+{
+  "name": "SuperRPG JavaScript 插件包",
+  "description": "SuperRPG 模块化 JavaScript 插件集合",
+  "version": "1.0.0",
+  "author": "SuperRPG Team",
+  "repository": "https://github.com/weiliangyan/weiScript-official-plugins",
+  "packages": {
+    "weiScript-core": {
+      "name": "weiScript-core",
+      "version": "1.0.0",
+      "description": "weiScript 核心模块，提供基础 API 和服务框架",
+      "category": "core",
+      "tags": ["core", "api", "framework"],
+      "dependencies": [],
+      "files": [
+        "weiScript-core/plugin.yml",
+        "weiScript-core/main.js"
+      ],
+      "download_url": "https://raw.githubusercontent.com/weiliangyan/weiScript-official-plugins/main/packages/weiScript-core.zip",
+      "install_priority": 1
+    },
+    
+    "weiScript-database": {
+      "name": "weiScript-database",
+      "version": "1.0.0",
+      "description": "数据库服务模块，支持 SQLite、MySQL、PostgreSQL",
+      "category": "service",
+      "tags": ["database", "service", "storage"],
+      "dependencies": ["weiScript-core"],
+      "files": [
+        "weiScript-database/plugin.yml",
+        "weiScript-database/main.js"
+      ],
+      "download_url": "https://raw.githubusercontent.com/weiliangyan/weiScript-official-plugins/main/packages/weiScript-database.zip",
+      "install_priority": 2
+    },
+    
+    "weiScript-player": {
+      "name": "weiScript-player",
+      "version": "1.0.0",
+      "description": "玩家数据管理模块，处理玩家属性、等级、经验等",
+      "category": "rpg",
+      "tags": ["player", "stats", "level", "experience"],
+      "dependencies": ["weiScript-core", "weiScript-database"],
+      "files": [
+        "weiScript-player/plugin.yml",
+        "weiScript-player/main.js"
+      ],
+      "download_url": "https://raw.githubusercontent.com/weiliangyan/weiScript-official-plugins/main/packages/weiScript-player.zip",
+      "install_priority": 3
+    },
+    
+    "weiScript-profession": {
+      "name": "weiScript-profession",
+      "version": "1.0.0",
+      "description": "职业系统模块，包含职业转换和天赋系统",
+      "category": "rpg",
+      "tags": ["profession", "class", "talent", "advancement"],
+      "dependencies": ["weiScript-core", "weiScript-database", "weiScript-player"],
+      "files": [
+        "weiScript-profession/plugin.yml",
+        "weiScript-profession/main.js"
+      ],
+      "download_url": "https://raw.githubusercontent.com/weiliangyan/weiScript-official-plugins/main/packages/weiScript-profession.zip",
+      "install_priority": 4
+    },
+    
+    "weiScript-skill": {
+      "name": "weiScript-skill",
+      "version": "1.0.0",
+      "description": "技能系统模块，基于 MiaoSkill 架构重构",
+      "category": "rpg",
+      "tags": ["skill", "magic", "combat", "hotbar"],
+      "dependencies": ["weiScript-core", "weiScript-database", "weiScript-player"],
+      "files": [
+        "weiScript-skill/plugin.yml",
+        "weiScript-skill/main.js"
+      ],
+      "download_url": "https://raw.githubusercontent.com/weiliangyan/weiScript-official-plugins/main/packages/weiScript-skill.zip",
+      "install_priority": 5
+    },
+    
+    "weiScript-equipment": {
+      "name": "weiScript-equipment",
+      "version": "1.0.0",
+      "description": "装备系统模块，包含装备管理、强化、制作等功能",
+      "category": "rpg",
+      "tags": ["equipment", "items", "crafting", "enchantment"],
+      "dependencies": ["weiScript-core", "weiScript-database", "weiScript-player"],
+      "files": [
+        "weiScript-equipment/plugin.yml",
+        "weiScript-equipment/main.js"
+      ],
+      "download_url": "https://raw.githubusercontent.com/weiliangyan/weiScript-official-plugins/main/packages/weiScript-equipment.zip",
+      "install_priority": 6
+    },
+    
+    "weiScript-quest": {
+      "name": "weiScript-quest",
+      "version": "1.0.0",
+      "description": "任务系统模块，支持多种任务类型和奖励系统",
+      "category": "rpg",
+      "tags": ["quest", "mission", "objective", "reward"],
+      "dependencies": ["weiScript-core", "weiScript-database", "weiScript-player"],
+      "files": [
+        "weiScript-quest/plugin.yml",
+        "weiScript-quest/main.js"
+      ],
+      "download_url": "https://raw.githubusercontent.com/weiliangyan/weiScript-official-plugins/main/packages/weiScript-quest.zip",
+      "install_priority": 7
+    },
+    
+    "weiScript-economy": {
+      "name": "weiScript-economy",
+      "version": "1.0.0",
+      "description": "经济系统模块，包含货币、商店、交易等功能",
+      "category": "economy",
+      "tags": ["economy", "money", "shop", "trade"],
+      "dependencies": ["weiScript-core", "weiScript-database", "weiScript-player"],
+      "files": [
+        "weiScript-economy/plugin.yml",
+        "weiScript-economy/main.js"
+      ],
+      "download_url": "https://raw.githubusercontent.com/weiliangyan/weiScript-official-plugins/main/packages/weiScript-economy.zip",
+      "install_priority": 8
+    },
+    
+    "weiScript-social": {
+      "name": "weiScript-social",
+      "version": "1.0.0",
+      "description": "社交系统模块，包含公会、组队、好友等功能",
+      "category": "social",
+      "tags": ["guild", "party", "friend", "chat"],
+      "dependencies": ["weiScript-core", "weiScript-database", "weiScript-player"],
+      "files": [
+        "weiScript-social/plugin.yml",
+        "weiScript-social/main.js"
+      ],
+      "download_url": "https://raw.githubusercontent.com/weiliangyan/weiScript-official-plugins/main/packages/weiScript-social.zip",
+      "install_priority": 9
+    }
+  },
+  
+  "categories": {
+    "core": {
+      "name": "核心模块",
+      "description": "weiScript 核心功能模块",
+      "color": "§c"
+    },
+    "service": {
+      "name": "服务模块",
+      "description": "提供基础服务的模块",
+      "color": "§9"
+    },
+    "rpg": {
+      "name": "RPG 模块",
+      "description": "RPG 游戏功能模块",
+      "color": "§6"
+    },
+    "economy": {
+      "name": "经济模块",
+      "description": "经济系统相关模块",
+      "color": "§a"
+    },
+    "social": {
+      "name": "社交模块",
+      "description": "社交功能相关模块",
+      "color": "§d"
+    }
+  },
+  
+  "installation_sets": {
+    "minimal": {
+      "name": "最小安装",
+      "description": "只安装核心模块",
+      "packages": ["weiScript-core", "weiScript-database"]
+    },
+    "basic": {
+      "name": "基础安装",
+      "description": "安装基础 RPG 功能",
+      "packages": ["weiScript-core", "weiScript-database", "weiScript-player", "weiScript-profession"]
+    },
+    "standard": {
+      "name": "标准安装",
+      "description": "安装标准 RPG 功能集",
+      "packages": ["weiScript-core", "weiScript-database", "weiScript-player", "weiScript-profession", "weiScript-skill", "weiScript-equipment"]
+    },
+    "full": {
+      "name": "完整安装",
+      "description": "安装所有 SuperRPG 模块",
+      "packages": ["weiScript-core", "weiScript-database", "weiScript-player", "weiScript-profession", "weiScript-skill", "weiScript-equipment", "weiScript-quest", "weiScript-economy", "weiScript-social"]
+    }
+  },
+  
+  "compatibility": {
+    "minecraft_versions": ["1.12.2", "1.13", "1.14", "1.15", "1.16", "1.17", "1.18", "1.19", "1.20", "1.21"],
+    "weiscript_version": "1.0.0+",
+    "java_version": "8+"
+  },
+  
+  "metadata": {
+    "last_updated": "2024-01-01T00:00:00Z",
+    "total_packages": 9,
+    "total_downloads": 0,
+    "featured_packages": ["weiScript-player", "weiScript-skill", "weiScript-profession"]
+  }
+}

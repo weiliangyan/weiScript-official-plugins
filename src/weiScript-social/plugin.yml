@@ -1,0 +1,121 @@
+name: "weiScript-social"
+version: "1.0.0"
+description: "SuperRPG 社交系统模块 - 包含公会、组队、好友系统"
+author: "SuperRPG Team"
+main: "main.js"
+api-version: "1.0"
+website: "https://github.com/weiliangyan/weiScript-official-plugins"
+
+# 依赖关系
+dependencies:
+  required:
+    - "weiScript-core"
+    - "weiScript-database"
+    - "weiScript-player"
+  optional:
+    - "weiScript-economy"
+    - "weiScript-gui"
+
+# 权限定义
+permissions:
+  superrpg.social.use:
+    description: "使用社交系统"
+    default: true
+  superrpg.social.admin:
+    description: "管理社交系统"
+    default: op
+  superrpg.social.guild:
+    description: "公会权限"
+    default: true
+  superrpg.social.party:
+    description: "组队权限"
+    default: true
+  superrpg.social.friend:
+    description: "好友权限"
+    default: true
+
+# 事件监听
+events:
+  - "player.join"
+  - "player.quit"
+  - "player.chat"
+  - "entity.death"
+
+# 命令定义
+commands:
+  guild:
+    description: "公会系统命令"
+    usage: "/guild <create|join|leave|info|invite>"
+    permission: "superrpg.social.guild"
+  party:
+    description: "组队系统命令"
+    usage: "/party <create|join|leave|invite|kick>"
+    permission: "superrpg.social.party"
+  friend:
+    description: "好友系统命令"
+    usage: "/friend <add|remove|list|accept|deny>"
+    permission: "superrpg.social.friend"
+  msg:
+    description: "私聊命令"
+    usage: "/msg <玩家名> <消息>"
+    permission: "superrpg.social.use"
+
+# 提供的服务
+provides:
+  - "guild-service"
+  - "party-service"
+  - "friend-service"
+  - "chat-service"
+
+# 服务接口
+services:
+  guild-service:
+    description: "公会管理服务"
+    methods:
+      - "createGuild(ownerUuid, guildName)"
+      - "joinGuild(uuid, guildId)"
+      - "leaveGuild(uuid)"
+      - "getPlayerGuild(uuid)"
+      - "getGuildMembers(guildId)"
+  party-service:
+    description: "组队系统服务"
+    methods:
+      - "createParty(leaderUuid)"
+      - "joinParty(uuid, partyId)"
+      - "leaveParty(uuid)"
+      - "getPlayerParty(uuid)"
+      - "getPartyMembers(partyId)"
+  friend-service:
+    description: "好友系统服务"
+    methods:
+      - "addFriend(uuid, friendUuid)"
+      - "removeFriend(uuid, friendUuid)"
+      - "getFriendList(uuid)"
+      - "areFriends(uuid1, uuid2)"
+
+# 社交配置
+social_config:
+  # 公会设置
+  guild:
+    enabled: true
+    max_members: 50
+    creation_cost: 10000
+    max_name_length: 16
+    
+  # 组队设置
+  party:
+    enabled: true
+    max_members: 6
+    exp_share: true
+    loot_share: true
+    
+  # 好友设置
+  friend:
+    enabled: true
+    max_friends: 100
+    
+  # 聊天设置
+  chat:
+    guild_prefix: "[G]"
+    party_prefix: "[P]"
+    friend_prefix: "[F]"

@@ -1,0 +1,112 @@
+name: "weiScript-skill"
+version: "1.0.0"
+description: "SuperRPG 技能系统模块 - 基于 MiaoSkill 架构重构"
+author: "SuperRPG Team"
+main: "main.js"
+api-version: "1.0"
+website: "https://github.com/weiliangyan/weiScript-official-plugins"
+
+# 依赖关系
+dependencies:
+  required:
+    - "weiScript-core"
+    - "weiScript-database"
+    - "weiScript-player"
+  optional:
+    - "weiScript-config"
+    - "weiScript-gui"
+
+# 权限定义
+permissions:
+  superrpg.skill.use:
+    description: "使用技能系统"
+    default: true
+  superrpg.skill.admin:
+    description: "管理技能系统"
+    default: op
+  superrpg.skill.cast:
+    description: "释放技能"
+    default: true
+  superrpg.skill.learn:
+    description: "学习技能"
+    default: true
+
+# 事件监听
+events:
+  - "player.join"
+  - "player.quit"
+  - "player.interact"
+  - "player.key_press"
+  - "player.level_up"
+  - "entity.damage"
+
+# 命令定义
+commands:
+  skill:
+    description: "技能系统命令"
+    usage: "/skill <list|learn|cast|info|reset>"
+    permission: "superrpg.skill.use"
+  skills:
+    description: "打开技能界面"
+    usage: "/skills"
+    permission: "superrpg.skill.use"
+  cast:
+    description: "释放技能"
+    usage: "/cast <技能名>"
+    permission: "superrpg.skill.cast"
+
+# 提供的服务
+provides:
+  - "skill-management-service"
+  - "skill-casting-service"
+  - "skill-effect-service"
+  - "skill-cooldown-service"
+
+# 服务接口
+services:
+  skill-management-service:
+    description: "技能管理服务"
+    methods:
+      - "getPlayerSkills(uuid)"
+      - "learnSkill(uuid, skillId)"
+      - "upgradeSkill(uuid, skillId)"
+      - "getSkillInfo(skillId)"
+  skill-casting-service:
+    description: "技能释放服务"
+    methods:
+      - "castSkill(uuid, skillId, target)"
+      - "canCastSkill(uuid, skillId)"
+      - "getSkillCooldown(uuid, skillId)"
+  skill-effect-service:
+    description: "技能效果服务"
+    methods:
+      - "applySkillEffect(target, effect)"
+      - "removeSkillEffect(target, effectId)"
+      - "getActiveEffects(target)"
+
+# 技能配置
+skill_config:
+  # 热键栏配置
+  hotbar:
+    enabled: true
+    size: 9
+    default_keys: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+  
+  # 冷却时间配置
+  cooldown:
+    enabled: true
+    display_format: "§c冷却中: {time}秒"
+    global_cooldown: 1.0
+  
+  # 技能效果配置
+  effects:
+    damage_multiplier: 1.0
+    healing_multiplier: 1.0
+    duration_multiplier: 1.0
+  
+  # 学习条件
+  learning:
+    require_level: true
+    require_profession: true
+    require_items: false
+    cost_skill_points: true

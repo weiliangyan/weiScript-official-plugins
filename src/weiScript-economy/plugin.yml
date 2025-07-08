@@ -1,0 +1,121 @@
+name: "weiScript-economy"
+version: "1.0.0"
+description: "SuperRPG 经济系统模块 - 迁移自 EconomyManager"
+author: "SuperRPG Team"
+main: "main.js"
+api-version: "1.0"
+website: "https://github.com/weiliangyan/weiScript-official-plugins"
+
+# 依赖关系
+dependencies:
+  required:
+    - "weiScript-core"
+    - "weiScript-database"
+    - "weiScript-player"
+  optional:
+    - "weiScript-gui"
+
+# 权限定义
+permissions:
+  superrpg.economy.use:
+    description: "使用经济系统"
+    default: true
+  superrpg.economy.admin:
+    description: "管理经济系统"
+    default: op
+  superrpg.economy.trade:
+    description: "交易权限"
+    default: true
+  superrpg.economy.shop:
+    description: "商店权限"
+    default: true
+
+# 事件监听
+events:
+  - "player.join"
+  - "player.quit"
+  - "entity.death"
+  - "block.break"
+
+# 命令定义
+commands:
+  money:
+    description: "查看金币"
+    usage: "/money [玩家名]"
+    permission: "superrpg.economy.use"
+  pay:
+    description: "转账给其他玩家"
+    usage: "/pay <玩家名> <金额>"
+    permission: "superrpg.economy.use"
+  shop:
+    description: "打开商店"
+    usage: "/shop [商店名]"
+    permission: "superrpg.economy.shop"
+  trade:
+    description: "交易系统"
+    usage: "/trade <玩家名>"
+    permission: "superrpg.economy.trade"
+  eco:
+    description: "经济管理命令"
+    usage: "/eco <give|take|set|reset> <玩家> <金额>"
+    permission: "superrpg.economy.admin"
+
+# 提供的服务
+provides:
+  - "economy-service"
+  - "shop-service"
+  - "trade-service"
+  - "bank-service"
+
+# 服务接口
+services:
+  economy-service:
+    description: "经济管理服务"
+    methods:
+      - "getBalance(uuid)"
+      - "addMoney(uuid, amount)"
+      - "removeMoney(uuid, amount)"
+      - "setMoney(uuid, amount)"
+      - "transferMoney(fromUuid, toUuid, amount)"
+  shop-service:
+    description: "商店系统服务"
+    methods:
+      - "getShopItems(shopId)"
+      - "buyItem(uuid, shopId, itemId, quantity)"
+      - "sellItem(uuid, shopId, item, quantity)"
+      - "getItemPrice(shopId, itemId, type)"
+  trade-service:
+    description: "交易系统服务"
+    methods:
+      - "createTrade(player1, player2)"
+      - "addTradeItem(tradeId, playerId, item)"
+      - "confirmTrade(tradeId, playerId)"
+      - "cancelTrade(tradeId)"
+
+# 经济配置
+economy_config:
+  # 货币设置
+  currency:
+    name: "金币"
+    symbol: "G"
+    decimal_places: 2
+    starting_balance: 100.0
+    
+  # 交易设置
+  trade:
+    enabled: true
+    max_distance: 10.0
+    timeout: 300
+    tax_rate: 0.05
+    
+  # 商店设置
+  shop:
+    enabled: true
+    tax_rate: 0.1
+    price_fluctuation: true
+    
+  # 银行设置
+  bank:
+    enabled: true
+    interest_rate: 0.01
+    max_deposit: 1000000.0

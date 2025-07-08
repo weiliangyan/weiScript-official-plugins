@@ -1,0 +1,85 @@
+name: "weiScript-database"
+version: "1.0.0"
+description: "weiScript 数据库服务模块 - 提供统一的数据库访问接口"
+author: "weiScript Team"
+main: "main.js"
+api-version: "1.0"
+website: "https://github.com/weiliangyan/weiScript-official-plugins"
+
+# 依赖关系
+dependencies:
+  required:
+    - "weiScript-core"
+  optional: []
+
+# 权限定义
+permissions:
+  weiscript.database.admin:
+    description: "数据库管理权限"
+    default: op
+
+# 命令定义
+commands:
+  dbadmin:
+    description: "数据库管理命令"
+    usage: "/dbadmin <status|backup|restore|optimize>"
+    permission: "weiscript.database.admin"
+
+# 提供的服务
+provides:
+  - "database-service"
+  - "cache-service"
+  - "migration-service"
+
+# 服务接口
+services:
+  database-service:
+    description: "数据库访问服务"
+    methods:
+      - "query(sql, params)"
+      - "execute(sql, params)"
+      - "transaction(queries)"
+      - "getConnection()"
+  cache-service:
+    description: "缓存服务"
+    methods:
+      - "get(key)"
+      - "set(key, value, ttl)"
+      - "delete(key)"
+      - "clear()"
+  migration-service:
+    description: "数据库迁移服务"
+    methods:
+      - "runMigrations()"
+      - "createMigration(name)"
+      - "rollback(steps)"
+
+# 数据库配置
+database_config:
+  # 数据库类型 (sqlite, mysql, postgresql)
+  type: "sqlite"
+  
+  # SQLite 配置
+  sqlite:
+    file: "plugins/weiScript/data/database.db"
+    
+  # MySQL 配置
+  mysql:
+    host: "localhost"
+    port: 3306
+    database: "weiscript"
+    username: "root"
+    password: ""
+    
+  # 连接池配置
+  pool:
+    max_connections: 10
+    min_connections: 2
+    connection_timeout: 30000
+    idle_timeout: 600000
+    
+  # 缓存配置
+  cache:
+    enabled: true
+    max_size: 1000
+    ttl: 3600

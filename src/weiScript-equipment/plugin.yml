@@ -1,0 +1,123 @@
+name: "weiScript-equipment"
+version: "1.0.0"
+description: "SuperRPG 装备系统模块 - 迁移自 EquipmentManager 和 ItemManager"
+author: "SuperRPG Team"
+main: "main.js"
+api-version: "1.0"
+website: "https://github.com/weiliangyan/weiScript-official-plugins"
+
+# 依赖关系
+dependencies:
+  required:
+    - "weiScript-core"
+    - "weiScript-database"
+    - "weiScript-player"
+  optional:
+    - "weiScript-profession"
+    - "weiScript-gui"
+
+# 权限定义
+permissions:
+  superrpg.equipment.use:
+    description: "使用装备系统"
+    default: true
+  superrpg.equipment.admin:
+    description: "管理装备系统"
+    default: op
+  superrpg.equipment.craft:
+    description: "制作装备"
+    default: true
+  superrpg.equipment.enchant:
+    description: "强化装备"
+    default: true
+
+# 事件监听
+events:
+  - "player.join"
+  - "player.interact"
+  - "inventory.click"
+  - "player.item_held"
+  - "entity.damage_by_entity"
+
+# 命令定义
+commands:
+  equipment:
+    description: "装备系统命令"
+    usage: "/equipment <info|stats|repair|enchant>"
+    permission: "superrpg.equipment.use"
+  item:
+    description: "物品命令"
+    usage: "/item <give|create|info>"
+    permission: "superrpg.equipment.admin"
+  craft:
+    description: "制作装备"
+    usage: "/craft <配方名>"
+    permission: "superrpg.equipment.craft"
+
+# 提供的服务
+provides:
+  - "equipment-service"
+  - "item-service"
+  - "crafting-service"
+  - "enchantment-service"
+
+# 服务接口
+services:
+  equipment-service:
+    description: "装备管理服务"
+    methods:
+      - "getPlayerEquipment(uuid)"
+      - "equipItem(uuid, item, slot)"
+      - "unequipItem(uuid, slot)"
+      - "calculateStats(uuid)"
+  item-service:
+    description: "物品管理服务"
+    methods:
+      - "createCustomItem(itemConfig)"
+      - "getItemInfo(item)"
+      - "isCustomItem(item)"
+      - "applyItemEffects(player, item)"
+  crafting-service:
+    description: "制作系统服务"
+    methods:
+      - "getCraftingRecipes()"
+      - "canCraft(uuid, recipeId)"
+      - "craftItem(uuid, recipeId)"
+  enchantment-service:
+    description: "强化系统服务"
+    methods:
+      - "enchantItem(item, enchantType, level)"
+      - "getEnchantmentCost(item, enchantType)"
+      - "canEnchant(item, enchantType)"
+
+# 装备配置
+equipment_config:
+  # 装备槽位
+  slots:
+    helmet: 0
+    chestplate: 1
+    leggings: 2
+    boots: 3
+    mainhand: 4
+    offhand: 5
+    ring1: 6
+    ring2: 7
+    necklace: 8
+    
+  # 耐久度系统
+  durability:
+    enabled: true
+    repair_cost_multiplier: 1.0
+    break_on_zero: false
+    
+  # 强化系统
+  enchantment:
+    enabled: true
+    max_level: 10
+    success_rate_base: 0.8
+    cost_multiplier: 1.5
+    
+  # 套装系统
+  sets:
+    enabled: true
+    bonus_threshold: 2

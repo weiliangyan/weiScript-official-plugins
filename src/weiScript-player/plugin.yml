@@ -1,0 +1,82 @@
+name: "weiScript-player"
+version: "1.0.0"
+description: "SuperRPG 玩家数据管理模块 - 迁移自 PlayerDataManager"
+author: "SuperRPG Team"
+main: "main.js"
+api-version: "1.0"
+website: "https://github.com/weiliangyan/weiScript-official-plugins"
+
+# 依赖关系
+dependencies:
+  required:
+    - "weiScript-core"
+    - "weiScript-database"
+  optional:
+    - "weiScript-config"
+
+# 权限定义
+permissions:
+  superrpg.player.use:
+    description: "使用玩家数据系统"
+    default: true
+  superrpg.player.admin:
+    description: "管理玩家数据"
+    default: op
+  superrpg.player.stats:
+    description: "查看玩家属性"
+    default: true
+  superrpg.player.level:
+    description: "查看等级信息"
+    default: true
+
+# 事件监听
+events:
+  - "player.join"
+  - "player.quit"
+  - "player.respawn"
+  - "player.death"
+  - "player.level_up"
+
+# 命令定义
+commands:
+  player:
+    description: "玩家数据命令"
+    usage: "/player <info|stats|level|reset>"
+    permission: "superrpg.player.use"
+  stats:
+    description: "查看玩家属性"
+    usage: "/stats [玩家名]"
+    permission: "superrpg.player.stats"
+  level:
+    description: "等级相关命令"
+    usage: "/level <info|add|set> [数值]"
+    permission: "superrpg.player.level"
+
+# 提供的服务
+provides:
+  - "player-data-service"
+  - "player-stats-service"
+  - "player-level-service"
+  - "player-experience-service"
+
+# 服务接口
+services:
+  player-data-service:
+    description: "玩家数据管理服务"
+    methods:
+      - "getPlayerData(uuid)"
+      - "savePlayerData(playerData)"
+      - "createPlayerData(uuid, username)"
+  player-stats-service:
+    description: "玩家属性服务"
+    methods:
+      - "getPlayerStats(uuid)"
+      - "updatePlayerStats(uuid, stats)"
+      - "addStatPoints(uuid, stat, points)"
+  player-level-service:
+    description: "等级经验服务"
+    methods:
+      - "getPlayerLevel(uuid)"
+      - "addExperience(uuid, amount)"
+      - "setLevel(uuid, level)"
+      - "getRequiredExp(level)"

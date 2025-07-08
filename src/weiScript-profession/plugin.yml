@@ -1,0 +1,100 @@
+name: "weiScript-profession"
+version: "1.0.0"
+description: "SuperRPG 职业系统模块 - 迁移自 ClassManager 和 TalentManager"
+author: "SuperRPG Team"
+main: "main.js"
+api-version: "1.0"
+website: "https://github.com/weiliangyan/weiScript-official-plugins"
+
+# 依赖关系
+dependencies:
+  required:
+    - "weiScript-core"
+    - "weiScript-database"
+    - "weiScript-player"
+  optional:
+    - "weiScript-skill"
+    - "weiScript-gui"
+
+# 权限定义
+permissions:
+  superrpg.profession.use:
+    description: "使用职业系统"
+    default: true
+  superrpg.profession.admin:
+    description: "管理职业系统"
+    default: op
+  superrpg.profession.change:
+    description: "转换职业"
+    default: true
+  superrpg.profession.talent:
+    description: "使用天赋系统"
+    default: true
+
+# 事件监听
+events:
+  - "player.join"
+  - "player.level_up"
+  - "player.profession_change"
+
+# 命令定义
+commands:
+  profession:
+    description: "职业系统命令"
+    usage: "/profession <info|change|list|talent>"
+    permission: "superrpg.profession.use"
+  class:
+    description: "职业命令别名"
+    usage: "/class <info|change|list>"
+    permission: "superrpg.profession.use"
+  talent:
+    description: "天赋系统命令"
+    usage: "/talent <tree|learn|reset>"
+    permission: "superrpg.profession.talent"
+
+# 提供的服务
+provides:
+  - "profession-service"
+  - "talent-service"
+  - "advancement-service"
+
+# 服务接口
+services:
+  profession-service:
+    description: "职业管理服务"
+    methods:
+      - "getPlayerProfession(uuid)"
+      - "changeProfession(uuid, professionId)"
+      - "getProfessionInfo(professionId)"
+      - "canChangeProfession(uuid, professionId)"
+  talent-service:
+    description: "天赋系统服务"
+    methods:
+      - "getPlayerTalents(uuid)"
+      - "learnTalent(uuid, talentId)"
+      - "resetTalents(uuid)"
+      - "getTalentTree(professionId)"
+
+# 职业配置
+profession_config:
+  # 基础职业
+  base_professions:
+    - "warrior"    # 战士
+    - "mage"       # 法师
+    - "rogue"      # 盗贼
+    - "archer"     # 弓箭手
+    - "priest"     # 牧师
+  
+  # 转职要求
+  change_requirements:
+    level_required: 10
+    cost_money: 1000
+    reset_stats: false
+    keep_skills: true
+  
+  # 天赋系统
+  talent_system:
+    enabled: true
+    points_per_level: 1
+    max_talent_level: 5
+    reset_cost: 5000

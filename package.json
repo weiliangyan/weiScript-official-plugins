@@ -1,0 +1,52 @@
+{
+  "name": "weiscript-official-plugins",
+  "version": "1.0.0",
+  "description": "SuperRPG JavaScript 插件包 - 基于 weiScript 平台的模块化 RPG 系统",
+  "main": "install.js",
+  "scripts": {
+    "build": "node build.js build",
+    "clean": "node build.js clean",
+    "verify": "node build.js verify",
+    "install-deps": "npm install archiver",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "npm run install-deps && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weiliangyan/weiScript-official-plugins.git"
+  },
+  "keywords": [
+    "minecraft",
+    "plugin",
+    "rpg",
+    "javascript",
+    "weiscript",
+    "superrpg",
+    "modular",
+    "bukkit",
+    "spigot",
+    "paper"
+  ],
+  "author": "SuperRPG Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/weiliangyan/weiScript-official-plugins/issues"
+  },
+  "homepage": "https://github.com/weiliangyan/weiScript-official-plugins#readme",
+  "dependencies": {
+    "archiver": "^5.3.1"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "files": [
+    "src/",
+    "packages/",
+    "install.js",
+    "build.js",
+    "package-index.json",
+    "README.md",
+    "LICENSE"
+  ]
+}

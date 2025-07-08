@@ -1,0 +1,117 @@
+name: "weiScript-quest"
+version: "1.0.0"
+description: "SuperRPG 任务系统模块 - 迁移自 QuestManager"
+author: "SuperRPG Team"
+main: "main.js"
+api-version: "1.0"
+website: "https://github.com/weiliangyan/weiScript-official-plugins"
+
+# 依赖关系
+dependencies:
+  required:
+    - "weiScript-core"
+    - "weiScript-database"
+    - "weiScript-player"
+  optional:
+    - "weiScript-profession"
+    - "weiScript-gui"
+
+# 权限定义
+permissions:
+  superrpg.quest.use:
+    description: "使用任务系统"
+    default: true
+  superrpg.quest.admin:
+    description: "管理任务系统"
+    default: op
+  superrpg.quest.accept:
+    description: "接受任务"
+    default: true
+  superrpg.quest.complete:
+    description: "完成任务"
+    default: true
+
+# 事件监听
+events:
+  - "player.join"
+  - "player.quit"
+  - "entity.death"
+  - "player.interact"
+  - "block.break"
+  - "block.place"
+  - "player.chat"
+
+# 命令定义
+commands:
+  quest:
+    description: "任务系统命令"
+    usage: "/quest <list|accept|complete|abandon|info>"
+    permission: "superrpg.quest.use"
+  quests:
+    description: "打开任务界面"
+    usage: "/quests"
+    permission: "superrpg.quest.use"
+  questadmin:
+    description: "任务管理命令"
+    usage: "/questadmin <create|delete|reload>"
+    permission: "superrpg.quest.admin"
+
+# 提供的服务
+provides:
+  - "quest-service"
+  - "objective-service"
+  - "reward-service"
+
+# 服务接口
+services:
+  quest-service:
+    description: "任务管理服务"
+    methods:
+      - "getPlayerQuests(uuid)"
+      - "acceptQuest(uuid, questId)"
+      - "completeQuest(uuid, questId)"
+      - "abandonQuest(uuid, questId)"
+      - "getQuestInfo(questId)"
+  objective-service:
+    description: "任务目标服务"
+    methods:
+      - "updateObjective(uuid, questId, objectiveId, progress)"
+      - "checkObjectiveCompletion(uuid, questId, objectiveId)"
+      - "getObjectiveProgress(uuid, questId, objectiveId)"
+  reward-service:
+    description: "奖励系统服务"
+    methods:
+      - "giveQuestReward(uuid, reward)"
+      - "calculateReward(quest, playerLevel)"
+      - "canReceiveReward(uuid, reward)"
+
+# 任务配置
+quest_config:
+  # 任务类型
+  types:
+    - "kill"        # 击杀任务
+    - "collect"     # 收集任务
+    - "deliver"     # 运送任务
+    - "interact"    # 交互任务
+    - "explore"     # 探索任务
+    - "craft"       # 制作任务
+    
+  # 任务难度
+  difficulties:
+    easy: 1.0
+    normal: 1.5
+    hard: 2.0
+    expert: 3.0
+    legendary: 5.0
+    
+  # 奖励倍率
+  reward_multipliers:
+    experience: 1.0
+    money: 1.0
+    items: 1.0
+    
+  # 任务限制
+  limits:
+    max_active_quests: 10
+    max_daily_quests: 5
+    max_weekly_quests: 3
